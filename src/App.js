@@ -32,9 +32,10 @@ function App() {
             flexGrow: 1,
             height: 100,
             overflowY: "scroll",
+            px: "40px",
           }}
         >
-          <Container maxWidth="xl" sx={{ mb: 3 }}>
+          <Container maxWidth="xxl" sx={{ mb: 3 }}>
             <LocationCards />
             <Box sx={{ display: { xs: "flex", md: "none" } }}>
               <MobileFooter />

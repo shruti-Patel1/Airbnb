@@ -50,7 +50,7 @@ export const locations = [
     locationImages: [
       {
         id: 1,
-        url: "https://images.unsplash.com/photo-1600240644455-3edc55c375fe?auto=format&fit=crop&w=400&h=250&q=60",
+        url: "https://a0.muscache.com/im/pictures/3ca2dd72-17ce-4bb6-aacc-a711e755688b.jpg?im_w=720",
       },
       {
         id: 2,

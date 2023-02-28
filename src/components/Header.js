@@ -16,9 +16,10 @@ const Header = () => {
         ...dFlex,
         minHeight: 70,
         borderBottom: "1px solid #ddd",
+        px: "25px",
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xxl">
         <Box
           sx={{
             ...flexBetweenCenter,

@@ -1,10 +1,8 @@
 import React from "react";
-import Paper from "@mui/material/Paper";
-import Stack from "@mui/material/Stack";
 import Link from "@mui/material/Link";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import { Button, Stack, Box, Typography, Paper } from "@mui/material";
+
 // react icons
 import { BsGlobe } from "react-icons/bs";
 import { IoChevronUpOutline } from "react-icons/io5";
@@ -51,10 +49,29 @@ const Footer = () => {
                     <Box sx={{ ...justifyCenter, mr: 1 }}>
                       <BsGlobe size={24} />
                     </Box>
-                    English(CA)
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        color: (theme) => theme.palette.text.primary,
+                      }}
+                    >
+                      English(CA)
+                    </Typography>
                   </Button>
-                  <Button>$CAD</Button>
-                  <Button>
+                  <Button
+                    sx={{
+                      fontWeight: "bold",
+                      color: (theme) => theme.palette.text.primary,
+                    }}
+                  >
+                    $CAD
+                  </Button>
+                  <Button
+                    sx={{
+                      fontWeight: "bold",
+                      color: (theme) => theme.palette.text.primary,
+                    }}
+                  >
                     Support & Resources
                     <Box sx={{ ...justifyCenter, ml: 1 }}>
                       <IoChevronUpOutline size={24} />

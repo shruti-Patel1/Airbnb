@@ -63,7 +63,7 @@ const CarouselCard = ({ location }) => {
               <div key={step.id}>
                 <Box
                   component="img"
-                  sx={carouselImage}
+                  sx={{ ...carouselImage, height: "260px" }}
                   src={step.url}
                   alt={step.id}
                 ></Box>
@@ -104,9 +104,13 @@ const CarouselCard = ({ location }) => {
 
       <Box sx={flexBetween}>
         <Box sx={{ mt: 2 }}>
-          <Typography component="h3"> {location.location}</Typography>
+          <Typography component="h3" sx={{ fontWeight: "bold" }}>
+            {location.location}
+          </Typography>
           <Typography component="h4"> {location.days}</Typography>
-          <Typography component="h5"> {location.price}</Typography>
+          <Typography component="h5" sx={{ fontWeight: "bold" }}>
+            {location.price}
+          </Typography>
         </Box>
         <Box sx={{ mt: 2 }}>
           <Box sx={dFlex}>
