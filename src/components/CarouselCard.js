@@ -22,9 +22,10 @@ import {
   fixedBottom,
 } from "themes/commonStyles";
 import "./CarouselCard.css";
-
-const CarouselCard = ({ location }) => {
+import FavoriteIcon from "@mui/icons-material/Favorite";
+const CarouselCard = ({ location, value }) => {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [like, setLike] = React.useState(false);
 
   const maxSteps = location.locationImages.length; // so that we know how many dots
 
@@ -47,9 +48,26 @@ const CarouselCard = ({ location }) => {
         position: "relative",
       }}
     >
-      <Box sx={fixedIcon}>
-        <FaRegHeart size={24} color="#fff" />
-      </Box>
+      <Button
+        sx={fixedIcon}
+        onClick={() => {
+          setLike(!like);
+        }}
+      >
+        {!!like ? (
+          <FavoriteIcon
+            size={24}
+            color="red"
+            style={{ color: "red", stroke: "#ffffff", strokeWidth: 2 }}
+          />
+        ) : (
+          <FavoriteIcon
+            size={24}
+            color="red"
+            style={{ color: "#5C6A79", stroke: "#ffffff", strokeWidth: 2 }}
+          />
+        )}
+      </Button>
 
       {location.locationImages.length && (
         <SwipeableViews
@@ -116,13 +134,13 @@ const CarouselCard = ({ location }) => {
           <Box sx={dFlex}>
             {location.isNew ? (
               <React.Fragment>
+                <AiFillStar size={18} sx={{ alignItems: "center" }} />
                 <Typography component="h5">New</Typography>
-                <AiFillStar size={18} />
               </React.Fragment>
             ) : (
               <React.Fragment>
+                <AiFillStar size={18} sx={{ alignItems: "center" }} />
                 <Typography component="h5"> {location.rating}</Typography>
-                <AiFillStar size={18} />
               </React.Fragment>
             )}
           </Box>

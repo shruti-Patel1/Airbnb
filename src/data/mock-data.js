@@ -22,26 +22,206 @@ import { FaCampground, FaUmbrellaBeach, FaSwimmingPool } from "react-icons/fa";
 import { RiEarthquakeFill } from "react-icons/ri";
 
 export const locationsTab = [
-  { id: 1, label: "Design", icon: <MdOutlineApartment size={24} /> },
-  { id: 2, label: "Arctic", icon: <BsSnow size={24} /> },
-  { id: 3, label: "Shared Homes", icon: <MdHouseSiding size={24} /> },
-  { id: 4, label: "LakeFront", icon: <MdOutlineWater size={24} /> },
-  { id: 5, label: "National Parks", icon: <GiKidSlide size={24} /> },
-  { id: 6, label: "Bed & Breakfast ", icon: <AiOutlineCoffee size={24} /> },
-  { id: 7, label: "OMG!", icon: <GiSpaceNeedle size={24} /> },
-  { id: 8, label: "Camping", icon: <FaCampground size={24} /> },
-  { id: 9, label: "A-frames", icon: <GiCampingTent size={24} /> },
-  { id: 10, label: "Domes", icon: <GiLightningDome size={24} /> },
-  { id: 11, label: "Tiny Homes", icon: <BiHomeAlt size={24} /> },
-  { id: 12, label: "Treehouses", icon: <GiEvilTree size={24} /> },
-  { id: 13, label: "Surfing", icon: <GiWaveSurfer size={24} /> },
-  { id: 14, label: "CountrySide", icon: <GiMountainCave size={24} /> },
-  { id: 15, label: "Caves", icon: <GiCaveEntrance size={24} /> },
-  { id: 16, label: "Golfing", icon: <GiGolfFlag size={24} /> },
-  { id: 17, label: "Cabins", icon: <MdCabin size={24} /> },
-  { id: 18, label: "Earth Homes", icon: <RiEarthquakeFill size={24} /> },
-  { id: 19, label: "Tropical", icon: <FaUmbrellaBeach size={24} /> },
-  { id: 20, label: "Amazing Pools", icon: <FaSwimmingPool size={24} /> },
+  {
+    id: 1,
+    label: "Camping",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/ca25c7f3-0d1f-432b-9efa-b9f5dc6d8770.jpg"
+        height={27}
+      />
+    ),
+  },
+  {
+    id: 2,
+    label: "Cabins",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/732edad8-3ae0-49a8-a451-29a8010dcc0c.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 3,
+    label: "Castles",
+    icon: (
+      <img
+        src="	https://a0.muscache.com/pictures/1b6a8b70-a3b6-48b5-88e1-2243d9172c06.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 4,
+    label: "Top of the world",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/248f85bf-e35e-4dc3-a9a1-e1dbff9a3db4.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 5,
+    label: "Trending",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/3726d94b-534a-42b8-bca0-a0304d912260.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 6,
+    label: "Amazing pools",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/3fb523a0-b622-4368-8142-b5e03df7549b.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 7,
+    label: "Farms",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/aaa02c2d-9f0d-4c41-878a-68c12ec6c6bd.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 8,
+    label: "Amazing views",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/3b1eb541-46d9-4bef-abc4-c37d77e3c21b.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 9,
+    label: "Luxe",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/c8e2ed05-c666-47b6-99fc-4cb6edcde6b4.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 10,
+    label: "Lake front",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/677a041d-7264-4c45-bb72-52bff21eb6e8.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 11,
+    label: "Beaches",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/10ce1091-c854-40f3-a2fb-defc2995bcaf.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 12,
+    label: "Skilling",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/c8bba3ed-34c0-464a-8e6e-27574d20e4d2.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 13,
+    label: "OMG!",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/c5a4f6fc-c92c-4ae8-87dd-57f1ff1b89a6.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 14,
+    label: "Tree houses",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/4d4a4eba-c7e4-43eb-9ce2-95e1d200d10e.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 15,
+    label: "Private rooms",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/eb7ba4c0-ea38-4cbb-9db6-bdcc8baad585.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 16,
+    label: "off-the-grid",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/9a2ca4df-ee90-4063-b15d-0de7e4ce210a.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 17,
+    label: "Boats",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/687a8682-68b3-4f21-8d71-3c3aef6c1110.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 18,
+    label: "Beachfront",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/bcd1adc0-5cee-4d7a-85ec-f6730b0f8d0c.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 19,
+    label: "Historical homes",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/33dd714a-7b4a-4654-aaf0-f58ea887a688.jpg"
+        height={26}
+      />
+    ),
+  },
+  {
+    id: 20,
+    label: "Tiny homes",
+    icon: (
+      <img
+        src="https://a0.muscache.com/pictures/35919456-df89-4024-ad50-5fcb7a472df9.jpg"
+        height={26}
+      />
+    ),
+  },
 ];
 
 export const locations = [
@@ -70,6 +250,7 @@ export const locations = [
     price: "$14,999 CAD night",
     isNew: true,
     rating: 4.5,
+    category: "farms",
   },
   {
     id: 2,
@@ -566,3 +747,56 @@ export const locations = [
     rating: 4.5,
   },
 ];
+
+// const citiesRef = collection(db, "Cabins");
+
+// await setDoc(doc(citiesRef, "1"), {
+//   location: "jibhi,India",
+//   days: "16-23 Mar",
+//   price: "INR 6,846 night",
+//   isNew: true,
+//   rating: 4.88,
+//   locationImages: [
+//     {
+//       id: 1,
+//       url: "https://a0.muscache.com/im/pictures/f0ea4cba-c771-41b6-92c5-caa646edb513.jpg?im_w=720",
+//     },
+//     {
+//       id: 2,
+//       url: "https://a0.muscache.com/im/pictures/miso/Hosting-2…2cbf183-3498-445f-b758-892a64caa56a.jpeg?im_w=720",
+//     },
+//     {
+//       id: 3,
+//       url: "	https://a0.muscache.com/im/pictures/miso/Hosting-2…aa15357-c6ca-4043-bf05-c9971215831a.jpeg?im_w=720",
+//     },
+//     {
+//       id: 4,
+//       url: "	https://a0.muscache.com/im/pictures/miso/Hosting-2…cc9b72f-9e92-4269-84c3-d710201d6e7a.jpeg?im_w=720",
+//     },
+//   ],
+// }),
+//   await setDoc(doc(citiesRef, "2"), {
+//     location: "Hemmathagama,Sri Lanka",
+//     days: "Sep 2-11",
+//     price: "$3000 CAD night",
+//     isNew: false,
+//     rating: 4.99,
+//     locationImages: [
+//       {
+//         id: 1,
+//         url: "https://a0.muscache.com/im/pictures/d3b2b902-6143-46e1-90fc-f6eee6f66e42.jpg?im_w=720",
+//       },
+//       {
+//         id: 2,
+//         url: "https://a0.muscache.com/im/pictures/72269983/464a337e_original.jpg?im_w=720",
+//       },
+//       {
+//         id: 3,
+//         url: "	https://a0.muscache.com/im/pictures/75764757/0f4ff298_original.jpg?im_w=720",
+//       },
+//       {
+//         id: 4,
+//         url: "https://a0.muscache.com/im/pictures/32410323/1a6f3f5a_original.jpg?im_w=720",
+//       },
+//     ],
+//   }),

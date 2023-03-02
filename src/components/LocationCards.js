@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Box, Grid } from "@mui/material";
-// import { locations as cardLocations } from "data/mock-data";
 import CarouselCard from "./CarouselCard";
 
 import { collection, doc, getDocs, setDoc } from "firebase/firestore";
 import { db } from "./googleSignIn/config";
-const citiesRef = collection(db, "locations");
-const LocationCards = () => {
+// const citiesRef = collection(db, "locations");
+const citiesRef = collection(db, "Cabins");
+
+const LocationCards = (props) => {
   const [dataFb, setDataFb] = React.useState("");
 
   // Note : = below given comments shows how the data has been posted to firebase
@@ -511,36 +512,87 @@ const LocationCards = () => {
   //     ],
   //   });
 
+  // await setDoc(doc(citiesRef, "1"), {
+  //   location: "jibhi,India",
+  //   days: "16-23 Mar",
+  //   price: "INR 6,846 night",
+  //   isNew: true,
+  //   rating: 4.88,
+  //   locationImages: [
+  //     {
+  //       id: 1,
+  //       url: "https://a0.muscache.com/im/pictures/f0ea4cba-c771-41b6-92c5-caa646edb513.jpg?im_w=720",
+  //     },
+  //     {
+  //       id: 2,
+  //       url: "https://a0.muscache.com/im/pictures/miso/Hosting-2…2cbf183-3498-445f-b758-892a64caa56a.jpeg?im_w=720",
+  //     },
+  //     {
+  //       id: 3,
+  //       url: "	https://a0.muscache.com/im/pictures/miso/Hosting-2…aa15357-c6ca-4043-bf05-c9971215831a.jpeg?im_w=720",
+  //     },
+  //     {
+  //       id: 4,
+  //       url: "	https://a0.muscache.com/im/pictures/miso/Hosting-2…cc9b72f-9e92-4269-84c3-d710201d6e7a.jpeg?im_w=720",
+  //     },
+  //   ],
+  // }),
+  //   await setDoc(doc(citiesRef, "2"), {
+  //     location: "Hemmathagama,Sri Lanka",
+  //     days: "Sep 2-11",
+  //     price: "$3000 CAD night",
+  //     isNew: false,
+  //     rating: 4.99,
+  //     locationImages: [
+  //       {
+  //         id: 1,
+  //         url: "https://a0.muscache.com/im/pictures/d3b2b902-6143-46e1-90fc-f6eee6f66e42.jpg?im_w=720",
+  //       },
+  //       {
+  //         id: 2,
+  //         url: "https://a0.muscache.com/im/pictures/72269983/464a337e_original.jpg?im_w=720",
+  //       },
+  //       {
+  //         id: 3,
+  //         url: "	https://a0.muscache.com/im/pictures/75764757/0f4ff298_original.jpg?im_w=720",
+  //       },
+  //       {
+  //         id: 4,
+  //         url: "https://a0.muscache.com/im/pictures/32410323/1a6f3f5a_original.jpg?im_w=720",
+  //       },
+  //     ],
+  //   }),
+
   useEffect(() => {
-    getUsers();
+    getSites();
   }, []);
 
-  const getUsers = async () => {
-    const details = collection(db, "locations");
+  const getSites = async () => {
+    const details = collection(db, "Sities");
     const data = await getDocs(details);
-    console.log(
-      "🚀 ~ data:",
-      data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    );
+    // console.log(
+    //   "🚀 ~ data:",
+    //   data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    // );
     setDataFb(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
-  // const [cards] = React.useState(dataFb);
-  // if (!cards.length) {
-  //   return null;
-  // }
+
   if (!dataFb.length) {
     return <>Loading , please wait</>;
   }
+
   return (
     <Box sx={{ mx: 2 }}>
       <Grid container rowSpacing={3} columnSpacing={3}>
-        {dataFb.map((location) => {
-          return (
-            <Grid key={location.id} item xs={12} sm={4} md={4} lg={3} xl={2}>
-              <CarouselCard location={location} />
-            </Grid>
-          );
-        })}
+        {dataFb
+          .filter((data) => data.category === props.value)
+          .map((location) => {
+            return (
+              <Grid key={location.id} item xs={12} sm={4} md={4} lg={3} xl={2}>
+                <CarouselCard location={location} value={props.value} />
+              </Grid>
+            );
+          })}
       </Grid>
     </Box>
   );

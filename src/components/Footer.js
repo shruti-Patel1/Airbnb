@@ -21,8 +21,15 @@ const footerLinks = [
 ];
 const Footer = () => {
   return (
-    <Box sx={{ ...fullWidthFlex, borderTop: "1px solid #ddd" }}>
-      <Container maxWidth="xl">
+    <Box
+      sx={{
+        ...fullWidthFlex,
+        borderTop: "1px solid #ddd",
+        mr: "35px",
+        ml: "30px",
+      }}
+    >
+      <Container maxWidth="xxl">
         <Box
           sx={{
             ...flexBetweenCenter,

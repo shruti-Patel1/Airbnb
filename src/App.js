@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Container } from "@mui/material";
+import React, { useState } from "react";
+import { Box, Container, Typography } from "@mui/material";
 
 import { CssBaseline } from "@mui/material";
 import Header from "components/Header";
@@ -9,8 +9,32 @@ import Footer from "components/Footer";
 import FooterMenu from "components/FooterMenu";
 import { displayOnDesktop } from "themes/commonStyles";
 import MobileFooter from "components/MobileFooter";
+import { locationsTab } from "data/mock-data";
 
 function App() {
+  const [value, setValue] = useState(0);
+  const [data, setData] = useState();
+
+  function TabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+      <div
+        role="tabpanel"
+        hidden={value !== index}
+        id={`simple-tabpanel-${index}`}
+        aria-labelledby={`simple-tab-${index}`}
+        {...other}
+      >
+        {value === index && (
+          <Box sx={{ p: 3 }}>
+            <Typography>{children}</Typography>
+          </Box>
+        )}
+      </div>
+    );
+  }
+
   return (
     <>
       <CssBaseline />
@@ -23,7 +47,7 @@ function App() {
       >
         <Box>
           <Header />
-          <OptionsTab />
+          <OptionsTab setValue={setValue} />
         </Box>
         <Box
           sx={{
@@ -35,12 +59,20 @@ function App() {
             px: "40px",
           }}
         >
-          <Container maxWidth="xxl" sx={{ mb: 3 }}>
-            <LocationCards />
-            <Box sx={{ display: { xs: "flex", md: "none" } }}>
-              <MobileFooter />
-            </Box>
-          </Container>
+          {locationsTab.map((data1) => {
+            return (
+              <>
+                <TabPanel value={value} index={data1.id - 1}>
+                  <Container maxWidth="xxl" sx={{ mb: 3 }}>
+                    <LocationCards value={data1.label} />
+                    <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                      <MobileFooter />
+                    </Box>
+                  </Container>
+                </TabPanel>
+              </>
+            );
+          })}
         </Box>
         <Box sx={{ display: { xs: "flex", md: "none" } }}>
           <FooterMenu />

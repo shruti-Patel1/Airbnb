@@ -40,7 +40,10 @@ export const fixedBottom = {
   width: "100%",
 };
 
-export const displayOnDesktop = { display: { xs: "none", md: "block" } };
+export const displayOnDesktop = {
+  display: { xs: "none", md: "flex" },
+  justifyContent: "space-between",
+};
 
 /** Custom carousel styles */
 
@@ -55,7 +58,7 @@ export const carouselDot = {
 
 export const fixedIcon = {
   position: "absolute",
-  right: 10,
+  right: 0,
   top: 10,
   zIndex: 10,
 };
