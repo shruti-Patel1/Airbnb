@@ -1,11 +1,10 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useEffect, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 // Initial State
-const initialState = {
+export const initialState = {
   users: [],
 };
-// console.log("🚀 ~ initialState:", initialState);
 
 // Create Context
 export const GlobalContext = createContext(initialState);
@@ -13,6 +12,7 @@ export const GlobalContext = createContext(initialState);
 // Provider Component
 export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
+  useEffect(() => {}, [state.users]);
 
   // Actions
   const removeUser = (id) => {
@@ -29,20 +29,11 @@ export const GlobalProvider = ({ children }) => {
     });
   };
 
-  // const editUser = (user) => {
-  //   dispatch({
-  //     type: "EDIT_USER",
-  //     payload: user,
-  //   });
-  // };
-
   return (
     <GlobalContext.Provider
       value={{
         users: state.users,
         removeUser,
-        addUser,
-        // editUser,
       }}
     >
       {children}

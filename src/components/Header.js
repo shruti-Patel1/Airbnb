@@ -6,6 +6,8 @@ import {
   dFlex,
   displayOnDesktop,
 } from "themes/commonStyles";
+import Link from "@mui/material/Link";
+
 import LocationSearch from "./LocationSearch";
 import ProfileSettings from "./ProfileSettings";
 import MobileSearch from "./MobileSearch";
@@ -28,7 +30,9 @@ const Header = () => {
           }}
         >
           <Box sx={displayOnDesktop}>
-            <Logo />
+            <Link href="/">
+              <Logo />
+            </Link>
           </Box>
           <Box sx={displayOnDesktop}>
             <LocationSearch />

@@ -21,9 +21,10 @@ const MobileSearch = () => {
         p: "2px 4px",
         display: "flex",
         alignItems: "center",
-        width: 400,
+        width: 370,
         border: "1px solid #ccc",
         borderRadius: 20,
+        // mx: "6rem",
       }}
     >
       <IconButton sx={{ p: "10px" }}>

@@ -56,7 +56,7 @@ function App() {
             flexGrow: 1,
             height: 100,
             overflowY: "scroll",
-            px: "40px",
+            px: { md: "40px" },
           }}
         >
           {locationsTab.map((data1) => {

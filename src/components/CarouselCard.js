@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import MobileStepper from "@mui/material/MobileStepper";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
-
+import Alert from "@mui/material/Alert";
 // mui icons
 import KeyboardArrowLeft from "@mui/icons-material/KeyboardArrowLeft";
 import KeyboardArrowRight from "@mui/icons-material/KeyboardArrowRight";
 // 3rd party
 import SwipeableViews from "react-swipeable-views";
+import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 
 // react icons
 import { AiFillStar } from "react-icons/ai";
-import { FaRegHeart } from "react-icons/fa";
+
 import {
   flexBetween,
   dFlex,
@@ -23,9 +24,41 @@ import {
 } from "themes/commonStyles";
 import "./CarouselCard.css";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-const CarouselCard = ({ location, value }) => {
+import { auth, db } from "./googleSignIn/config";
+import { Modal } from "@mui/material";
+
+const CarouselCard = ({ location, snapData }) => {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [like, setLike] = React.useState(false);
+  const [like, setLike] = React.useState();
+  const [data, setData] = React.useState();
+
+  const [oldData, setOldData] = React.useState([]);
+  const [joinData, setJoinData] = React.useState();
+
+  const [open, setOpen] = useState(false);
+  const handleClose = () => setOpen(false);
+  const style = {
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 500,
+    bgcolor: "background.paper",
+    boxShadow: 24,
+    borderRadius: "1%",
+    p: 2,
+  };
+  useEffect(() => {
+    setData(
+      auth.currentUser?.email
+        ? auth.currentUser?.email
+        : auth.currentUser?.phoneNumber
+    );
+  }, []);
+
+  useEffect(() => {
+    snapData && snapData.find((val) => val == location.id && setLike(true));
+  }, [snapData]);
 
   const maxSteps = location.locationImages.length; // so that we know how many dots
 
@@ -40,6 +73,51 @@ const CarouselCard = ({ location, value }) => {
   const handleStepChange = (step) => {
     setActiveStep(step); // handle swipe change
   };
+
+  const citiesRef = collection(db, "test");
+
+  const HandleLike = async () => {
+    !auth.currentUser ? setOpen(true) : setLike(!like);
+    const currentId = location.id;
+    const docRef = doc(db, "Users", data);
+
+    if (!like) {
+      const citiesRef = collection(db, "Users");
+
+      const citySnapshot = await getDocs(citiesRef);
+
+      let citySnapshotData = citySnapshot.docs
+        .map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+        .filter((value) => value.id == data);
+
+      let storedOldData = citySnapshotData[0].favourite.concat(
+        parseInt(currentId)
+      );
+
+      await updateDoc(doc(citiesRef, data), {
+        favourite: storedOldData,
+      });
+    } else {
+      const citiesRef = collection(db, "Users");
+      const citySnapshot = await getDocs(citiesRef);
+
+      let citySnapshotData = citySnapshot.docs
+        .map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        }))
+        .filter((value) => value.id == data)[0]
+        .favourite.filter((value) => value != currentId);
+
+      await updateDoc(doc(citiesRef, data), {
+        favourite: citySnapshotData,
+      });
+    }
+  };
+
   return (
     <Box
       className="carouselCard"
@@ -48,12 +126,19 @@ const CarouselCard = ({ location, value }) => {
         position: "relative",
       }}
     >
-      <Button
-        sx={fixedIcon}
-        onClick={() => {
-          setLike(!like);
-        }}
-      >
+      <Box>
+        <Modal
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="modal-modal-title"
+          aria-describedby="modal-modal-description"
+        >
+          <Box sx={style}>
+            <Alert severity="error">Please Log in</Alert>
+          </Box>
+        </Modal>
+      </Box>
+      <Button sx={fixedIcon} onClick={HandleLike}>
         {!!like ? (
           <FavoriteIcon
             size={24}

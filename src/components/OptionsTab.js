@@ -14,7 +14,6 @@ const OptionsTab = (props) => {
       <Container
         maxWidth="xxl"
         sx={{
-          // mx: "70px",
           display: "flex",
           flexGrow: 1,
           px: { sx: 0, md: 2 },
@@ -24,7 +23,6 @@ const OptionsTab = (props) => {
         }}
       >
         <Tabs
-          // indicatorColor={"Hre"}
           value={value}
           onChange={handleChange}
           variant="scrollable"
